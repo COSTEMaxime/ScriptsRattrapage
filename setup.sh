@@ -63,5 +63,3 @@ iface eth0 inet static
 	netmask $NETMASK
 	gateway $GATEWAY
 	dns-nameservers $DNS" > $NETWORKINGFILE
-
-shutdown -r now

@@ -5,11 +5,7 @@ email='testmail@test.fr'
 rootDir='/etc/apache2/sites-available'
 documentRoot='/var/www/test.local'
 
-if ! [ -d $rootDir]; then
-	mkdir $rootDir
-	chmod 777 $rootDir
-
-	echo "
+echo "
 <VirtualHost *:80>
 
 	ServerAdmin $email
@@ -26,11 +22,11 @@ if ! [ -d $rootDir]; then
 
    </VirtualHost>" >> $rootDir/$domainName.conf
 
-	echo "127.0.0.1		$domainName" >> /etc/hosts
-	a2ensite $domainName.conf
-	/etc/init.d/apache2 reload
+echo "127.0.0.1		$domainName" >> /etc/hosts
+a2ensite $domainName.conf
+/etc/init.d/apache2 reload
 
-	echo "
+echo "
 <html>
 	<head>
 		<title>Site cesi.local</title>
@@ -40,6 +36,3 @@ if ! [ -d $rootDir]; then
 		<h1>Bienvenue sur le site cesi.local !</h1>
 	</body>
 </html>" >> $documentRoot/index.html
-	
-	exit 0;
-fi
